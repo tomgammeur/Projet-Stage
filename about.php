@@ -14,4 +14,4 @@ function register($user){
 //
 }
 
-require "index.view.php";
+require "about.view.php";
