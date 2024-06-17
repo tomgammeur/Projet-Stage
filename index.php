@@ -1,7 +1,7 @@
 <?php
 
 $business = [
-    'name' => 'Laracasts',
+    'name' => 'TomG',
     'cost' => 15,
     'categories' => ["Markdown","PHP","Javascript", "HTML"]
 ];
