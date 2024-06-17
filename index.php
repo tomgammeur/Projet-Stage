@@ -3,7 +3,7 @@
 $business = [
     'name' => 'TomG',
     'cost' => 15,
-    'categories' => ["Testing","PHP","Javascript", "HTML"]
+    'categories' => ["Markdown","PHP","Javascript", "HTML"]
 ];
 
 
