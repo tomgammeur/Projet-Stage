@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Magasin</title>
+    <title>Panier</title>
     <link rel="shortcut icon" type="image/icon" href="C:\Users\BL203616\Documents\favicon.ico">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -20,7 +20,37 @@
         <b>Panier</b>
     <br>
     <br>
-    <b>Vous ne possédez aucun produit dans votre panier</b>
+<?php
+session_start();
+$_SESSION['prenom'] = 'tom';
+ require "connexion.php";
+ $sql = "SELECT id, name, prix, photo FROM products WHERE id = " . $_GET['id'];
+
+ echo "Produit : ";
+ echo $_GET['id'];
+
+ $stmt = $connexion->prepare($sql);
+ $stmt->execute();
+
+
+ $product = $stmt->fetch(PDO::FETCH_ASSOC);
+
+ if ($product) {
+   echo "Votre panier : ";
+   echo "ID: " . $product['id'];
+   echo "<br>";
+   echo "Nom: " . $product['name'];
+   echo "<br>";
+   echo "Prix: " . $product['prix'];
+   echo "<br>";
+   echo "Lien: " . $product['photo'];
+   echo '<br>';
+ } else {
+   echo "Vous ne possedez aucun produit dans votre panier.";
+ }
+ ?>
+
+?>
     <br>
     <br>
     <br>
@@ -29,19 +59,22 @@
     <br>
 <li>Articles recommandés</li>
 <?php
-$produits = [
-    ['id' => 1, 'nom' => 'Produit A', 'prix' => 19.99],
-    ['id' => 2, 'nom' => 'Produit B', 'prix' => 29.99],
-    ['id' => 3, 'nom' => 'Produit C', 'prix' => 19.99],
-    ['id' => 4, 'nom' => 'Produit D', 'prix' => 29.99],
-];
-echo "<div class='colonne-produits'>";
-foreach ($produits as $produit) {
-    echo "<div class='produit'>";
-    echo "<h3>" . $produit['nom'] . "</h3>";
-    echo "<p>Prix: " . $produit['prix'] . "€</p>";
-    echo "</div>";
-}
+$sql = 'SELECT id, name, photo, prix
+FROM products;';
+foreach  ($connexion->query($sql) as $row) {
+
+
+
+     echo '<a href="produit.php?id='.$row['id'].'">' .  $row['id'] . '</a>';
+     print $row['id'] . "<br>";
+     print $row['name'] . "<br>";
+     print $row['photo'] . "<br>";
+     print $row['prix'] . "<br>";
+    
+  }
+ echo "</div>"; 
+
+echo "</div>";
 
 
 echo "<style>";
@@ -58,11 +91,20 @@ echo "font-family: Calibri;";
 echo "}";
 echo "</style>";
 echo "</div>";
+//Exemple d'entrainement (veuillez retirer tous les //)
+//$toto = "bonjour je m'appele tom";
+//if (strlen($toto)>500){
+//echo "toto existe";
+//} else {
+//    echo "toto n'existe pas";
+//}
+//echo strtoupper("tom");
+//echo strlen("tom");
+
 ?>
 <br>
 <br>
-<b>
-
+<b> 
    <footer>
   <p>footer</p>  
   </footer>
