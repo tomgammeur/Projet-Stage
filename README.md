@@ -4,7 +4,7 @@ Mon projet fait en language PHP lors de mon stage
 [![forthebadge](https://forthebadge.com/images/badges/uses-php.svg)](https://forthebadge.com)
 [![forthebadge](https://forthebadge.com/images/badges/uses-git.svg)](https://forthebadge.com)
 
-#### Site en cours de création
+#### Projet abandonné car site utilisé pour ancien stage
 <br>
 <p>~~</p>
 <br>
